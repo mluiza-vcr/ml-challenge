@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import Logo from "/logo-dark.png";
 import { UserNav } from "./user-nav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { Switch } from "../ui/switch";
 
@@ -18,6 +18,18 @@ export default function Header() {
       localStorage.setItem("theme", "light");
     }
   };
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    }
+  }, []);
 
   return (
     <div
