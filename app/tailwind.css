@@ -87,7 +87,7 @@
 }
 
 @layer utilities {
-  .bg-gradient-remax {
+  .bg-gradient {
     background: linear-gradient(
       235deg,
       hsl(218deg 100% 32%) 0%,
