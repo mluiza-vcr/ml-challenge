@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 import GlobalLoading from "./global-loading";
 import Header from "./header";
 import Sidebar from "./sidebar";
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
+import { Spotlight } from "../ui/spotlight";
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,6 +21,9 @@ export default function Layout({ children }: LayoutProps) {
         overflow: "hidden",
       }}
     >
+      <StarsBackground />
+      <ShootingStars />
+      <Spotlight className="left-0 md:left-60" fill="pink" />
       <Header />
       <Sidebar />
       <main

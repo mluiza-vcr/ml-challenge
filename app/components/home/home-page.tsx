@@ -14,7 +14,7 @@ export default function HomePage() {
         <div className="flex flex-col justify-center items-center space-y-2">
           <img src={Logo} alt="logotipo" className="w-72 mt-10 md:mt-0" />
         </div>
-        <Spotlight className="left-0 md:left-60 md:-top-20" fill="white" />
+        <Spotlight className="left-0 md:left-60 md:-top-20" fill="blue" />
         <div className=" p-4 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-10 space-y-10">
           <div className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
             Bem-vindos ao
