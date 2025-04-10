@@ -1,6 +1,7 @@
 import { defer, MetaFunction } from "@remix-run/node";
-import HomePage from "~/components/home/home-page";
-// import { RainbowButton } from "~/components/ui/rainbow-button";
+import OtherPage from "~/components/home/other-page";
+import Layout from "~/components/layout/layout";
+import Title from "~/components/layout/title";
 import { generatePageTile } from "~/utils/metadata";
 
 // export async function loader({ request }: LoaderFunctionArgs) {
@@ -20,5 +21,12 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return <HomePage />;
+  return (
+    <>
+      <Layout>
+        <Title>Socorro</Title>
+        <OtherPage />
+      </Layout>
+    </>
+  );
 }
