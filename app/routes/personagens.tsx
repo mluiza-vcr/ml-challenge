@@ -7,11 +7,12 @@ import { Await, useLoaderData } from "@remix-run/react";
 import { Suspense, useEffect, useState } from "react";
 import ListCharacters from "~/components/characters/list-characters";
 import ErrorPage from "~/components/global/error-page";
-import GlobalLoading from "~/components/layout/global-loading";
 import Layout from "~/components/layout/layout";
+import LoadingData from "~/components/layout/loaging-data";
 import Title from "~/components/layout/title";
 import { CharacterRepository } from "~/infra/instances/repositories/character-repository";
 import { generatePageTile } from "~/utils/metadata";
+import { TextGenerateEffect } from "~/components/ui/text-generate-effect";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
@@ -33,18 +34,12 @@ export const meta: MetaFunction = () => {
 
 export default function Characters() {
   const { charactersPromise, page } = useLoaderData<typeof loader>();
-
   return (
     <>
       <Layout>
         <Title>Personagens</Title>
-        <Suspense fallback={<p>Carregando personagens...</p>}>
-          <Await
-            resolve={charactersPromise}
-            errorElement={
-              <p>Falha ao carregar personagens. Tente novamente mais tarde.</p>
-            }
-          >
+        <Suspense fallback={<LoadingData />}>
+          <Await resolve={charactersPromise} errorElement={<ErrorPage />}>
             {(characters) => {
               if (characters.error !== null) return <ErrorPage />;
               if (characters)
