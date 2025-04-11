@@ -25,21 +25,24 @@ export default function ListCharacters({
   return (
     <div>
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-5 lg:flex-wrap lg:justify-evenly">
-        {results?.map((character) => {
-          return (
-            <CharacterCard
-              key={character.name}
-              name={character.name}
-              gender={character.gender}
-              planetName={character.planetName}
-            />
-          );
-        })}
+        {results
+          ?.slice()
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((character) => {
+            return (
+              <CharacterCard
+                key={character.name}
+                name={character.name}
+                gender={character.gender}
+                planetName={character.planetName}
+              />
+            );
+          })}
       </div>
-      <div className="lg:mt-10">
+      <div className="mt-6 lg:mt-10">
         {totalPages > 1 && (
-          <Pagination className="justify-center mt-8">
-            <PaginationContent>
+          <Pagination className="flex flex-wrap justify-center gap-2 mt-4 px-4">
+            <PaginationContent className="flex flex-wrap justify-center gap-2">
               {page > 1 && (
                 <PaginationItem>
                   <PaginationPrevious href={`?page=${page - 1}`} />
@@ -53,6 +56,7 @@ export default function ListCharacters({
                     <PaginationLink
                       href={`?page=${pageNumber}`}
                       isActive={pageNumber === page}
+                      className="min-w-[36px] text-center"
                     >
                       {pageNumber}
                     </PaginationLink>

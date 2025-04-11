@@ -9,6 +9,7 @@ export interface Character {
   homeworld: string;
   planetName: string;
 }
+
 const planetCache = new Map<string, string>();
 const limit = pLimit(3); // 3 requisições de planeta ao mesmo tempo
 
