@@ -18,7 +18,7 @@ export default function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                to="/"
+                to="/home"
                 className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
               >
                 <PanelsTopLeft className="h-5 w-5" />
@@ -33,14 +33,14 @@ export default function Sidebar() {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                to="/outrapagina"
+                to="/personagens?page=1"
                 className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground"
               >
                 <UsersRound className="h-5 w-5" />
-                <span className="sr-only">Outra</span>
+                <span className="sr-only">Personagens</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="bottom">Outra</TooltipContent>
+            <TooltipContent side="bottom">Personagens</TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </nav>

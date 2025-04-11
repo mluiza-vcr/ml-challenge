@@ -1,7 +1,7 @@
 import { UpdateIcon } from "@radix-ui/react-icons";
 import { useNavigation } from "@remix-run/react";
 import { useEffect, useState } from "react";
-import Logo from "/logo-dark.png";
+import Logo from "/logo-star-wars.png";
 
 function Timer() {
   const [initialTime] = useState(Date.now());
