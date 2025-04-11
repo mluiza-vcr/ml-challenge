@@ -16,13 +16,9 @@ export default function HomePage() {
           <img src={LogoML} alt="logotipo" className="w-64 mt-10 md:mt-0" />
         </div>
         <Spotlight className="left-0 md:left-60 md:-top-20" fill="blue" />
-        <div className=" p-4 max-w-7xl mx-auto relative z-10 w-full pt-20 md:pt-0">
+        <div className="p-6 mx-auto relative z-10 w-full md:pt-0">
           <div className="flex flex-col justify-center items-center">
-            <img
-              src={LogoStarWars}
-              alt="logotipo"
-              className="w-96 mt-10 md:mt-0"
-            />
+            <img src={LogoStarWars} alt="logotipo" className="w-96" />
           </div>
           <div className="flex flex-col justify-center items-center">
             <Link to="/home">
