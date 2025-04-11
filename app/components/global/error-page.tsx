@@ -1,9 +1,7 @@
-import Layout from "../layout/layout";
-
 export default function ErrorPage() {
   return (
-    <Layout>
-      <p>Erro ao carregar dados</p>
-    </Layout>
+    <p className="lg:pl-6 lg:pt-5 lg:text-xl">
+      Falha ao carregar dados. Tente novamente mais tarde.
+    </p>
   );
 }
