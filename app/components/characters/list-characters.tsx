@@ -35,6 +35,7 @@ export default function ListCharacters({
                 name={character.name}
                 gender={character.gender}
                 planetName={character.planetName}
+                url={character.url}
               />
             );
           })}

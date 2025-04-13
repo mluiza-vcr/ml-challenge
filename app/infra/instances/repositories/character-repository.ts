@@ -8,6 +8,18 @@ export interface Character {
   gender: string;
   homeworld: string;
   planetName: string;
+  url: string;
+}
+
+export interface CharacterDetail {
+  name: string;
+  height: string;
+  mass: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
 }
 
 const planetCache = new Map<string, string>();
@@ -30,11 +42,11 @@ export class CharacterRepository {
     }
   }
 
-  async getCharacters(page: number) {
+  async getCharacters(page: number, search: string) {
     try {
-      const response = await api.get("/people", {
-        params: { page },
-      });
+      const response = await api.get(
+        `/people/?search=${encodeURIComponent(search)}&page=${page}`
+      );
 
       const characters = response.data.results;
 
@@ -56,6 +68,25 @@ export class CharacterRepository {
           next: response.data.next,
           previous: response.data.previous,
           results: charactersWithPlanets,
+        },
+        error: null,
+      };
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    } catch (err: any) {
+      console.log("err", err);
+      return {
+        data: null,
+        error: err,
+      };
+    }
+  }
+
+  async getCharacterById(id: string) {
+    try {
+      const response = await api.get(`/people/${id}`);
+      return {
+        data: {
+          character: response.data,
         },
         error: null,
       };
