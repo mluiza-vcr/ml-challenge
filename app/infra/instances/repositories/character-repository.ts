@@ -20,6 +20,8 @@ export interface CharacterDetail {
   eye_color: string;
   birth_year: string;
   gender: string;
+  planetName: string;
+  filmTitles: string[];
 }
 
 const planetCache = new Map<string, string>();
@@ -84,9 +86,21 @@ export class CharacterRepository {
   async getCharacterById(id: string) {
     try {
       const response = await api.get(`/people/${id}`);
+      const character = response.data;
+
+      const homeworldResponse = await api.get(character.homeworld);
+      const planetName = homeworldResponse.data.name;
+
+      const filmsResponses = await Promise.all(
+        character.films.map((filmUrl: string) => api.get(filmUrl))
+      );
+      const filmTitles = filmsResponses.map((filmRes) => filmRes.data.title);
+
       return {
         data: {
-          character: response.data,
+          character,
+          planetName,
+          filmTitles,
         },
         error: null,
       };

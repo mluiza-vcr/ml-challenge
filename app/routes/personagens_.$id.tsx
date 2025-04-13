@@ -35,7 +35,11 @@ export default function CharacterDetails() {
             if (character.error !== null) return <ErrorPage />;
             if (character)
               return (
-                <VisualizeCharacter character={character.data?.character} />
+                <VisualizeCharacter
+                  character={character?.data?.character}
+                  filmTitles={character?.data?.filmTitles}
+                  planetName={character?.data?.planetName}
+                />
               );
           }}
         </Await>
