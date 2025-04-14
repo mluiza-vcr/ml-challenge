@@ -3,17 +3,17 @@ import { useSearchParams } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import Layout from "~/components/layout/layout";
 import Title from "~/components/layout/title";
-import ListFavoriteCharacters from "~/components/characters/list-favorite-characters";
 import { Button } from "~/components/ui/button";
 import { generatePageTile } from "~/utils/metadata";
+import ListFavoritePlanets from "~/components/planets/list-favorite-planets";
 
 const PAGE_SIZE = 10;
 
 export const meta: MetaFunction = () => {
-  return [{ title: generatePageTile("Personagens favoritos") }];
+  return [{ title: generatePageTile("Planetas favoritos") }];
 };
 
-export default function FavoriteCharacters() {
+export default function FavoritePlanets() {
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const [favorites, setFavorites] = useState<any[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,7 +21,7 @@ export default function FavoriteCharacters() {
 
   // Carregar os favoritos do localStorage quando o componente for montado
   useEffect(() => {
-    const storedFavorites = localStorage.getItem("favoriteCharacters");
+    const storedFavorites = localStorage.getItem("favoritePlanets");
     if (storedFavorites) {
       try {
         // Parse os dados armazenados no localStorage
@@ -61,10 +61,10 @@ export default function FavoriteCharacters() {
 
   return (
     <Layout>
-      <Title>Personagens favoritos</Title>
+      <Title>Planetas favoritos</Title>
       {paginatedFavorites.length > 0 ? (
         <>
-          <ListFavoriteCharacters results={paginatedFavorites} />
+          <ListFavoritePlanets results={paginatedFavorites} />
           <div className="flex justify-center items-center space-x-4 mt-6">
             <Button
               onClick={handlePrev}
@@ -87,7 +87,7 @@ export default function FavoriteCharacters() {
         </>
       ) : (
         <p className="text-muted-foreground mt-6 text-center">
-          Nenhum personagem foi favoritado ainda.
+          Nenhum planeta foi favoritado ainda.
         </p>
       )}
     </Layout>
