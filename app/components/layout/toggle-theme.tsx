@@ -18,11 +18,8 @@ export default function ToggleTheme() {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
 
-    if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+    if (storedTheme === "dark" || !storedTheme) {
       document.documentElement.classList.add("dark");
       setIsDark(true);
     }
