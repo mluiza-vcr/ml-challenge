@@ -1,4 +1,4 @@
-import type { Character } from "~/infra/instances/repositories/character-repository";
+import type { Character } from "~/infra/repositories/character-repository";
 import { CharacterCard } from "./character-card";
 import {
   Pagination,

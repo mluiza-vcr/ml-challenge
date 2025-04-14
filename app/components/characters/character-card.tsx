@@ -5,7 +5,7 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import { Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
-import type { Character } from "~/infra/instances/repositories/character-repository";
+import type { Character } from "~/infra/repositories/character-repository";
 
 export function CharacterCard({ character }: { character: Character }) {
   function extractIdFromUrl(url: string): string | null {

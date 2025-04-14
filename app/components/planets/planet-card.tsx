@@ -5,7 +5,7 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import { Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
-import type { Planet } from "~/infra/instances/repositories/planet-repository";
+import type { Planet } from "~/infra/repositories/planet-repository";
 
 export function PlanetCard({ planet }: { planet: Planet }) {
   function extractIdFromUrl(url: string): string | null {

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "@remix-run/react";
 import { PlanetDetailsCard } from "./planet-details-card";
-import type { PlanetDetail } from "~/infra/instances/repositories/planet-repository";
+import type { PlanetDetail } from "~/infra/repositories/planet-repository";
 import { Button } from "../ui/button";
 
 export default function VisualizePlanet({ planet }: { planet: PlanetDetail }) {

@@ -1,4 +1,4 @@
-import type { CharacterDetail } from "~/infra/instances/repositories/character-repository";
+import type { CharacterDetail } from "~/infra/repositories/character-repository";
 import { CharacterDetailsCard } from "./character-details-card";
 import { useNavigate, useParams } from "@remix-run/react";
 import { Button } from "../ui/button";

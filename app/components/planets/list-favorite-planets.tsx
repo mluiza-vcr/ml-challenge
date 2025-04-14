@@ -1,5 +1,5 @@
 import { PlanetCard } from "./planet-card";
-import type { Planet } from "~/infra/instances/repositories/planet-repository";
+import type { Planet } from "~/infra/repositories/planet-repository";
 
 export default function ListFavoritePlanets({
   results,
