@@ -7,7 +7,7 @@ import { MobileNavBar } from "./mobile-nav-bar";
 export default function Header() {
   return (
     <div
-      className="flex justify-between h-14 items-center px-4 border-b supports-backdrop-blur:bg-background/60 bg-background/60 backdrop-blur z-50"
+      className="flex justify-between h-20 items-center px-4 border-b supports-backdrop-blur:bg-background/60 bg-background/60 backdrop-blur z-50"
       style={{ gridArea: "header" }}
     >
       <Link to="/">

@@ -149,3 +149,138 @@ export function formatBirthYear(year: string, gender: string): string {
 
   return `Ano de nascimento: ${year}`;
 }
+
+export function getClimateLabel(climate: string): string {
+  const climateMap: Record<string, string> = {
+    arid: "Árido",
+    artic: "Ártico",
+    temperate: "Temperado",
+    frozen: "Congelado",
+    tropical: "Tropical",
+    murky: "Turvo",
+    windy: "Ventoso",
+    hot: "Quente",
+    humid: "Úmido",
+    moist: "Úmido",
+    frigid: "Frio extremo",
+    subartic: "Subártico",
+    artificial: "Artificial",
+    polluted: "Poluído",
+    rocky: "Pedregoso",
+    superheated: "Superaquecido",
+    frozen_wastes: "Desertos Congelados",
+    unknown: "Desconhecido",
+    "artificial temperate": "Artificial temperado",
+  };
+
+  return climate
+    .split(",")
+    .map((item) => {
+      const trimmed = item.trim().toLowerCase();
+      return climateMap[trimmed] || capitalize(trimmed);
+    })
+    .join(", ");
+}
+
+function capitalize(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+export function getTerrainLabel(terrain: string): string {
+  const terrainMap: Record<string, string> = {
+    desert: "Deserto",
+    deserts: "Desertos",
+    grasslands: "Campos de grama",
+    mountains: "Montanhas",
+    jungle: "Selva",
+    forest: "Floresta",
+    forests: "Florestas",
+    lakes: "Lagos",
+    rivers: "Rios",
+    ocean: "Oceano",
+    swamp: "Pântano",
+    cityscape: "Área urbana",
+    tundra: "Tundra",
+    ice: "Gelo",
+    rocky: "Rochoso",
+    volcanoes: "Vulcões",
+    plains: "Planícies",
+    hills: "Colinas",
+    caves: "Cavernas",
+    barren: "Estéril",
+    savanna: "Savana",
+    savannas: "Savanas",
+    savannahs: "Savanas",
+    sinkholes: "Sumidouros",
+    cliffs: "Penhascos",
+    fields: "Campos",
+    rainforests: "Florestas tropicais",
+    canyons: "Cânions",
+    glaciers: "Geleiras",
+    islands: "Ilhas",
+    beaches: "Praias",
+    plateaus: "Planaltos",
+    unknown: "Desconhecido",
+    jungles: "Selvas",
+    swamps: "Pântanos",
+    mountain: "Montanha",
+    grass: "Grama",
+    scrublands: "Regiões de arbustos",
+    urban: "Urbano",
+    oceans: "Oceanos",
+    bogs: "Turfeiras",
+    mesas: "Chapadas",
+    seas: "Mares",
+    reefs: "Recifes",
+    valleys: "Vales",
+    ash: "Cinzas",
+    verdant: "Verdejante",
+    vines: "Vinhas",
+    cities: "Cidades",
+    "gas giant": "Gigante de gás",
+    "lava rivers": "Rios de lava",
+    "mountain ranges": "Serras",
+    "ice caves": "Cavernas de gelo",
+    "grassy hills": "Montanhas gramadas",
+    "airless asteroid": "Asteroide sem atmosfera",
+    "ice canyons": "Cânios de gelo",
+    "rocky canyons": "Cânios de pedra",
+    "fungus forests": "Florestas de fungos",
+    "rock arches": "Arcos de pedra",
+    "rocky islands": "Ilhas de pedra",
+    "rocky deserts": "Desertos de pedra",
+    "toxic cloudsea": "Mar de nuvens tóxicas",
+    "acid pools": "Lagos de ácido",
+  };
+
+  return terrain
+    .split(",")
+    .map((item) => {
+      const trimmed = item.trim().toLowerCase();
+      return terrainMap[trimmed] || capitalize(trimmed);
+    })
+    .join(", ");
+}
+
+export function getRotationPeriodLabel(value: string): string {
+  if (value.toLowerCase() === "unknown")
+    return "Período de rotação desconhecido";
+
+  const num = Number.parseInt(value, 10);
+  if (Number.isNaN(num)) return "Período de rotação inválido";
+
+  if (num === 0) return "Sem rotação";
+
+  return `Um dia dura aprox. ${num} hora${num === 1 ? "" : "s"}`;
+}
+
+export function getOrbitalPeriodLabel(value: string): string {
+  if (value.toLowerCase() === "unknown") return "Período orbital desconhecido";
+
+  const num = Number.parseInt(value, 10);
+  if (Number.isNaN(num)) return "Período orbital inválido";
+
+  if (num === 0) return "Sem translação";
+
+  return `Um ano dura aprox. ${num} dia${num === 1 ? "" : "s"}`;
+}

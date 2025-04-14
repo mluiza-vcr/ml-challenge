@@ -1,5 +1,5 @@
 import { Sheet, SheetTrigger, SheetContent } from "~/components/ui/sheet";
-import { Contact, Earth, Home, Menu } from "lucide-react";
+import { Contact, Earth, Home, Menu, Star } from "lucide-react";
 import { Link } from "@remix-run/react";
 
 export function MobileNavBar() {
@@ -11,20 +11,26 @@ export function MobileNavBar() {
       <SheetContent side="left">
         <nav className="flex flex-col space-y-4 mt-8">
           <Link to="/home" className="text-lg font-medium flex items-center">
-            <Home className="mr-2" width={20} />
+            <Home className="mr-2" size={20} />
             Home
           </Link>
           <Link
             to="/personagens?page=1"
             className="text-lg font-medium flex items-center"
           >
-            <Contact className="mr-2" width={20} /> Personagens
+            <Contact className="mr-2" size={20} /> Personagens
           </Link>
           <Link
-            to="/personagens?page=1"
+            to="/planetas?page=1"
             className="text-lg font-medium flex items-center"
           >
-            <Earth className="mr-2" width={20} /> Planetas
+            <Earth className="mr-2" size={20} /> Planetas
+          </Link>
+          <Link
+            to="/favoritos"
+            className="text-lg font-medium flex items-center"
+          >
+            <Star className="mr-2" size={20} /> Favoritos
           </Link>
         </nav>
       </SheetContent>

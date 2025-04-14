@@ -6,7 +6,7 @@ import ErrorPage from "~/components/global/error-page";
 import Layout from "~/components/layout/layout";
 import LoadingData from "~/components/layout/loading-data";
 import Title from "~/components/layout/title";
-import { CharacterRepository } from "~/infra/instances/repositories/character-repository";
+import { CharacterRepository } from "~/infra/repositories/character-repository";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const id = params.id;
@@ -31,15 +31,10 @@ export default function CharacterDetails() {
       <Suspense fallback={<LoadingData />}>
         <Await resolve={characterPromise} errorElement={<ErrorPage />}>
           {(character) => {
-            if (character.error !== null) return <ErrorPage />;
+            if (character.error !== null || character.data === null)
+              return <ErrorPage />;
             if (character)
-              return (
-                <VisualizeCharacter
-                  character={character?.data?.character}
-                  filmTitles={character?.data?.filmTitles}
-                  planetName={character?.data?.planetName}
-                />
-              );
+              return <VisualizeCharacter character={character?.data} />;
           }}
         </Await>
       </Suspense>

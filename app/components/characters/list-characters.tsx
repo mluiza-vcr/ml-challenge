@@ -18,7 +18,7 @@ export default function ListCharacters({
   count: number;
   page: number;
 }) {
-  const totalPages = Math.ceil(count / 10); // SWAPI retorna 10 por página
+  const totalPages = Math.ceil(count / 10);
 
   return (
     <div>
@@ -27,15 +27,7 @@ export default function ListCharacters({
           ?.slice()
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((character) => {
-            return (
-              <CharacterCard
-                key={character.name}
-                name={character.name}
-                gender={character.gender}
-                planetName={character.planetName}
-                url={character.url}
-              />
-            );
+            return <CharacterCard key={character.name} character={character} />;
           })}
       </div>
       <div className="mt-6 lg:mt-10">

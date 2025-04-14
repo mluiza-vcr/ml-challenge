@@ -101,7 +101,7 @@ export function CharacterDetailsCard({
             </p>
           ) : (
             <Link
-              to={`planetas/${extractIdFromUrl(homeworld)}`}
+              to={`/planetas/${extractIdFromUrl(homeworld)}`}
               className="text-sm lg:text-base text-cyan-500 text-decoration: underline hover:opacity-70"
             >
               {planetName}
