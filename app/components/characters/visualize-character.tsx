@@ -3,21 +3,18 @@ import { CharacterDetailsCard } from "./character-details-card";
 
 export default function VisualizeCharacter({
   character,
-  filmTitles,
-  planetName,
 }: {
   character: CharacterDetail;
-  filmTitles: string[] | undefined;
-  planetName: string;
 }) {
+  console.log(character);
   return (
     <div>
       <CharacterDetailsCard
         name={character.name}
         mass={character.mass}
         gender={character.gender}
-        planetName={planetName}
-        filmTitles={filmTitles}
+        planetName={character.planetName}
+        filmTitles={character.filmTitles}
         hair_color={character.hair_color}
         skin_color={character.skin_color}
         height={character.height}

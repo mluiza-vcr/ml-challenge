@@ -15,7 +15,6 @@ import { CharacterRepository } from "~/infra/instances/repositories/character-re
 import { generatePageTile } from "~/utils/metadata";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
-import GlobalLoading from "~/components/layout/global-loading";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
@@ -90,7 +89,6 @@ export default function Characters() {
           </div>
         </div>
 
-        {/* VER SE É MELHOR GLOBAL LOADING OU DATALOADING */}
         <Suspense fallback={<LoadingData />}>
           <Await resolve={charactersPromise} errorElement={<ErrorPage />}>
             {(characters) => {

@@ -26,11 +26,20 @@ export interface CharacterDetail {
   homeworld: string;
 }
 
+type SwapiApiCharacterResponse = {
+  name: string;
+  height: string;
+  mass: string;
+  gender: string;
+  homeworld: string;
+  url: string;
+};
+
 type SwapiResponse = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: Character[];
+  results: SwapiApiCharacterResponse[];
 };
 
 const limit = pLimit(3); // 3 requisições de planeta ao mesmo tempo
@@ -42,10 +51,10 @@ export class CharacterRepository {
     try {
       const res: Response = await fetch(url);
       const data: { name: string } = await res.json();
-      return data.name; // Retorna apenas o nome do planeta
+      return data.name;
     } catch (err) {
       console.error("Erro ao buscar o planeta", err);
-      return "Desconhecido"; // Caso haja erro, retornamos "Desconhecido"
+      return "Desconhecido";
     }
   }
 
@@ -55,19 +64,18 @@ export class CharacterRepository {
         `/people/?search=${encodeURIComponent(search)}&page=${page}`
       );
 
-      const characters = response.data.results;
+      const characters = response.data.results as SwapiApiCharacterResponse[];
 
-      // Mapeamento para adicionar o nome do planeta aos personagens
-      const charactersWithPlanets = await Promise.all(
-        characters.map(async (char: Character) => {
+      const charactersWithPlanets: Character[] = await Promise.all(
+        characters.map(async (char) => {
           const planetName = await limit(() =>
             this.getPlanetName(char.homeworld)
           );
 
-          // Não precisamos acessar planetRes.data, pois agora é apenas uma string
           return {
             ...char,
-            planetName: planetName ?? "Desconhecido", // Retorna o nome do planeta ou "Desconhecido"
+            planetName,
+            id: this.extractIdFromUrl(char.url),
           };
         })
       );
@@ -99,11 +107,14 @@ export class CharacterRepository {
       const res: Response = await fetch(nextUrl);
       const data: SwapiResponse = await res.json();
 
-      // Mapeia cada personagem e busca o nome do planeta
-      const charactersWithPlanets = await Promise.all(
+      const charactersWithPlanets: Character[] = await Promise.all(
         data.results.map(async (character) => {
           const planetName = await this.getPlanetName(character.homeworld);
-          return { ...character, planetName }; // Adiciona o nome do planeta ao personagem
+          return {
+            ...character,
+            planetName,
+            id: this.extractIdFromUrl(character.url),
+          };
         })
       );
 
@@ -130,12 +141,22 @@ export class CharacterRepository {
       );
       const filmTitles = filmsResponses.map((filmRes) => filmRes.data.title);
 
+      const characterDetail: CharacterDetail = {
+        name: character.name,
+        height: character.height,
+        mass: character.mass,
+        hair_color: character.hair_color,
+        skin_color: character.skin_color,
+        eye_color: character.eye_color,
+        birth_year: character.birth_year,
+        gender: character.gender,
+        planetName,
+        filmTitles,
+        homeworld: character.homeworld,
+      };
+
       return {
-        data: {
-          character,
-          planetName,
-          filmTitles,
-        },
+        data: characterDetail,
         error: null,
       };
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -146,5 +167,10 @@ export class CharacterRepository {
         error: err,
       };
     }
+  }
+
+  private extractIdFromUrl(url: string): string {
+    const match = url.match(/\/people\/(\d+)\//);
+    return match ? match[1] : "";
   }
 }
