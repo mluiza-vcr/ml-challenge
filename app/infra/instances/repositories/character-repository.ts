@@ -2,6 +2,7 @@ import { api } from "~/infra/instances/api-star-wars";
 import pLimit from "p-limit";
 
 export interface Character {
+  id?: string;
   name: string;
   height: string;
   mass: string;
@@ -25,23 +26,26 @@ export interface CharacterDetail {
   homeworld: string;
 }
 
-const planetCache = new Map<string, string>();
+type SwapiResponse = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Character[];
+};
+
 const limit = pLimit(3); // 3 requisições de planeta ao mesmo tempo
 
 export class CharacterRepository {
-  async getPlanetName(url: string) {
-    if (planetCache.has(url)) {
-      // biome-ignore lint/style/noNonNullAssertion: <explanation>
-      return { data: planetCache.get(url)!, error: null };
-    }
+  private baseUrl = "https://swapi.dev/api/people/";
 
+  private async getPlanetName(url: string): Promise<string> {
     try {
-      const response = await api.get(url);
-      const name = response.data.name;
-      planetCache.set(url, name);
-      return { data: name, error: null };
+      const res: Response = await fetch(url);
+      const data: { name: string } = await res.json();
+      return data.name; // Retorna apenas o nome do planeta
     } catch (err) {
-      return { data: null, error: err };
+      console.error("Erro ao buscar o planeta", err);
+      return "Desconhecido"; // Caso haja erro, retornamos "Desconhecido"
     }
   }
 
@@ -53,14 +57,17 @@ export class CharacterRepository {
 
       const characters = response.data.results;
 
+      // Mapeamento para adicionar o nome do planeta aos personagens
       const charactersWithPlanets = await Promise.all(
         characters.map(async (char: Character) => {
-          const planetRes = await limit(() =>
+          const planetName = await limit(() =>
             this.getPlanetName(char.homeworld)
           );
+
+          // Não precisamos acessar planetRes.data, pois agora é apenas uma string
           return {
             ...char,
-            planetName: planetRes.data ?? "Desconhecido",
+            planetName: planetName ?? "Desconhecido", // Retorna o nome do planeta ou "Desconhecido"
           };
         })
       );
@@ -82,6 +89,32 @@ export class CharacterRepository {
         error: err,
       };
     }
+  }
+
+  async getAllCharacters(): Promise<{ count: number; results: Character[] }> {
+    let allCharacters: Character[] = [];
+    let nextUrl: string | null = this.baseUrl;
+
+    while (nextUrl) {
+      const res: Response = await fetch(nextUrl);
+      const data: SwapiResponse = await res.json();
+
+      // Mapeia cada personagem e busca o nome do planeta
+      const charactersWithPlanets = await Promise.all(
+        data.results.map(async (character) => {
+          const planetName = await this.getPlanetName(character.homeworld);
+          return { ...character, planetName }; // Adiciona o nome do planeta ao personagem
+        })
+      );
+
+      allCharacters = [...allCharacters, ...charactersWithPlanets];
+      nextUrl = data.next;
+    }
+
+    return {
+      count: allCharacters.length,
+      results: allCharacters,
+    };
   }
 
   async getCharacterById(id: string) {

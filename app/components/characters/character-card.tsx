@@ -5,55 +5,62 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import { Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
+import type { Character } from "~/infra/instances/repositories/character-repository";
 
-export function CharacterCard({
-  name,
-  gender,
-  planetName,
-  url,
-}: {
-  name: string;
-  gender: string;
-  planetName: string;
-  url: string;
-}) {
+export function CharacterCard({ character }: { character: Character }) {
   function extractIdFromUrl(url: string): string | null {
     const match = url.match(/\/people\/(\d+)\//);
     return match ? match[1] : null;
   }
 
-  const id = extractIdFromUrl(url);
+  const id = extractIdFromUrl(character.url);
   const [isFavorite, setIsFavorite] = useState(false);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     if (!id) return;
+
     const stored = localStorage.getItem("favorites");
-    const favorites = stored ? JSON.parse(stored) : [];
-    setIsFavorite(favorites.includes(id));
+    const favorites: Character[] = stored ? JSON.parse(stored) : [];
+
+    const alreadyFavorited = favorites.some((fav) => {
+      const favId = extractIdFromUrl(fav.url);
+      return favId === id;
+    });
+
+    setIsFavorite(alreadyFavorited);
   }, [id]);
 
   function toggleFavorite(e: React.MouseEvent) {
-    e.preventDefault(); // impedir navegação ao clicar na estrela
+    e.preventDefault(); // Impede navegação ao clicar na estrela
     if (!id) return;
 
     const stored = localStorage.getItem("favorites");
-    const favorites = stored ? JSON.parse(stored) : [];
+    const favorites: Character[] = stored ? JSON.parse(stored) : [];
 
-    // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
-    let updatedFavorites;
-    if (favorites.includes(id)) {
-      updatedFavorites = favorites.filter((favId: string) => favId !== id);
+    const isAlreadyFavorited = favorites.some((fav) => {
+      const favId = extractIdFromUrl(fav.url);
+      return favId === id;
+    });
+
+    let updatedFavorites: Character[];
+
+    if (isAlreadyFavorited) {
+      updatedFavorites = favorites.filter((fav) => {
+        const favId = extractIdFromUrl(fav.url);
+        return favId !== id;
+      });
     } else {
-      updatedFavorites = [...favorites, id];
+      updatedFavorites = [...favorites, character];
     }
 
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    setIsFavorite(updatedFavorites.includes(id));
+    setIsFavorite(!isAlreadyFavorited);
   }
 
   return (
-    <div className="w-full lg:min-w-80 lg:w-1/6 cursor-pointer">
-      <Link to={`/personagens/${extractIdFromUrl(url)}`}>
+    <div className="w-full lg:min-w-80 lg:w-1/6 cursor-pointer relative">
+      <Link to={`/personagens/${id}`}>
         <BackgroundGradient className="rounded-[22px] p-4 sm:p-8 bg-white dark:bg-zinc-900 lg:h-56 text-center">
           <div
             onClick={toggleFavorite}
@@ -64,6 +71,7 @@ export function CharacterCard({
                 toggleFavorite(e as unknown as React.MouseEvent);
               }
             }}
+            aria-pressed={isFavorite}
           >
             <Star
               fill={isFavorite ? "rgb(147 51 234)" : "none"}
@@ -72,13 +80,16 @@ export function CharacterCard({
             />
           </div>
           <p className="sm:text-xl font-bold lg:text-2xl text-black mt-4 mb-2 dark:text-neutral-200">
-            {name}
+            {character.name}
           </p>
           <p className="lg:mt-5 sm:text-lg text-black mt-4 mb-2 dark:text-neutral-200">
-            {getGenderLabel(gender)}
+            {getGenderLabel(character.gender)}
           </p>
           <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
-            Planeta {planetName === "unknown" ? "Desconhecido" : planetName}
+            Planeta{" "}
+            {character.planetName === "unknown"
+              ? "Desconhecido"
+              : character.planetName}
           </p>
         </BackgroundGradient>
       </Link>

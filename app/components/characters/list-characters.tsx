@@ -27,15 +27,7 @@ export default function ListCharacters({
           ?.slice()
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((character) => {
-            return (
-              <CharacterCard
-                key={character.name}
-                name={character.name}
-                gender={character.gender}
-                planetName={character.planetName}
-                url={character.url}
-              />
-            );
+            return <CharacterCard key={character.name} character={character} />;
           })}
       </div>
       <div className="mt-6 lg:mt-10">
