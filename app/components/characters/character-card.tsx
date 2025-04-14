@@ -20,7 +20,7 @@ export function CharacterCard({ character }: { character: Character }) {
   useEffect(() => {
     if (!id) return;
 
-    const stored = localStorage.getItem("favorites");
+    const stored = localStorage.getItem("favoriteCharacters");
     const favorites: Character[] = stored ? JSON.parse(stored) : [];
 
     const alreadyFavorited = favorites.some((fav) => {
@@ -35,7 +35,7 @@ export function CharacterCard({ character }: { character: Character }) {
     e.preventDefault(); // Impede navegação ao clicar na estrela
     if (!id) return;
 
-    const stored = localStorage.getItem("favorites");
+    const stored = localStorage.getItem("favoriteCharacters");
     const favorites: Character[] = stored ? JSON.parse(stored) : [];
 
     const isAlreadyFavorited = favorites.some((fav) => {
@@ -54,7 +54,10 @@ export function CharacterCard({ character }: { character: Character }) {
       updatedFavorites = [...favorites, character];
     }
 
-    localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    localStorage.setItem(
+      "favoriteCharacters",
+      JSON.stringify(updatedFavorites)
+    );
     setIsFavorite(!isAlreadyFavorited);
   }
 
