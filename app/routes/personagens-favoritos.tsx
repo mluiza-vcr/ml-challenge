@@ -61,7 +61,7 @@ export default function FavoriteCharacters() {
 
   return (
     <Layout>
-      <Title>Favoritos</Title>
+      <Title>Personagens favoritos</Title>
       {paginatedFavorites.length > 0 ? (
         <>
           <ListFavoriteCharacters results={paginatedFavorites} />
