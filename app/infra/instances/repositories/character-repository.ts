@@ -36,7 +36,7 @@ type SwapiResponse = {
 const limit = pLimit(3); // 3 requisições de planeta ao mesmo tempo
 
 export class CharacterRepository {
-  private baseUrl = "https://swapi.dev/api/people/";
+  private baseUrl = "https://swapi.py4e.com/api/people/";
 
   private async getPlanetName(url: string): Promise<string> {
     try {

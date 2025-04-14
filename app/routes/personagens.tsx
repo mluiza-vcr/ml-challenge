@@ -91,7 +91,7 @@ export default function Characters() {
         </div>
 
         {/* VER SE É MELHOR GLOBAL LOADING OU DATALOADING */}
-        <Suspense fallback={<GlobalLoading />}>
+        <Suspense fallback={<LoadingData />}>
           <Await resolve={charactersPromise} errorElement={<ErrorPage />}>
             {(characters) => {
               if (characters.error !== null) return <ErrorPage />;
