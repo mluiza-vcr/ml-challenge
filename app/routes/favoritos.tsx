@@ -1,9 +1,14 @@
+import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
 import { Contact, Earth } from "lucide-react";
 import Layout from "~/components/layout/layout";
 import Title from "~/components/layout/title";
 import { BackgroundGradient } from "~/components/ui/background-gradient";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
+import { generatePageTile } from "~/utils/metadata";
+
+export const meta: MetaFunction = () => {
+  return [{ title: generatePageTile("Favoritos") }];
+};
 
 export default function Favorites() {
   return (
