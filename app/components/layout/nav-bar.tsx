@@ -1,4 +1,4 @@
-import { Contact, Earth, Home } from "lucide-react";
+import { Contact, Earth, Home, Star } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 import { Link } from "@remix-run/react";
 
@@ -38,6 +38,18 @@ export default function NavBar() {
               className="text-neutral-600 dark:text-white flex justify-center items-center"
             >
               <Earth className="mr-1" width={20} /> Planetas
+            </CardItem>
+          </CardBody>
+        </Link>
+      </CardContainer>
+      <CardContainer>
+        <Link to="/personagens-favoritos">
+          <CardBody className="cursor-pointer text-sm hover:shadow-2xl hover:shadow-emerald-400/[0.5] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-[6.5rem] h-fit rounded-xl p-3 border">
+            <CardItem
+              translateZ="50"
+              className="text-neutral-600 dark:text-white flex justify-center items-center"
+            >
+              <Star className="mr-1" width={20} /> Favoritos
             </CardItem>
           </CardBody>
         </Link>
