@@ -1,5 +1,5 @@
-import { UpdateIcon } from "@radix-ui/react-icons";
 import Logo from "/logo-star-wars.png";
+import { Rocket } from "lucide-react";
 
 export default function LoadingData() {
   return (
@@ -13,7 +13,7 @@ export default function LoadingData() {
             alt="loading logo"
             draggable={false}
           />
-          <UpdateIcon className="inline animate-spin  w-1/2 h-auto z-[200] text-blue-400" />
+          <Rocket className="inline animate-spin w-1/2 h-auto z-[200] text-cyan-400" />
         </div>
       </div>
     </>
