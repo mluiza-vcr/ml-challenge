@@ -31,15 +31,10 @@ export default function CharacterDetails() {
       <Suspense fallback={<LoadingData />}>
         <Await resolve={characterPromise} errorElement={<ErrorPage />}>
           {(character) => {
-            if (character.error !== null) return <ErrorPage />;
+            if (character.error !== null || character.data === null)
+              return <ErrorPage />;
             if (character)
-              return (
-                <VisualizeCharacter
-                  character={character?.data?.character}
-                  filmTitles={character?.data?.filmTitles}
-                  planetName={character?.data?.planetName}
-                />
-              );
+              return <VisualizeCharacter character={character?.data} />;
           }}
         </Await>
       </Suspense>
