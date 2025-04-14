@@ -10,7 +10,6 @@ export default function VisualizeCharacter({
   filmTitles: string[] | undefined;
   planetName: string;
 }) {
-  console.log("character", character);
   return (
     <div>
       <CharacterDetailsCard
@@ -24,6 +23,7 @@ export default function VisualizeCharacter({
         height={character.height}
         eye_color={character.eye_color}
         birth_year={character.birth_year}
+        homeworld={character.homeworld}
       />
     </div>
   );

@@ -22,6 +22,7 @@ export interface CharacterDetail {
   gender: string;
   planetName: string;
   filmTitles: string[];
+  homeworld: string;
 }
 
 const planetCache = new Map<string, string>();

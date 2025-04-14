@@ -18,8 +18,6 @@ export default function ListCharacters({
   count: number;
   page: number;
 }) {
-  console.log("results", results);
-
   const totalPages = Math.ceil(count / 10); // SWAPI retorna 10 por página
 
   return (

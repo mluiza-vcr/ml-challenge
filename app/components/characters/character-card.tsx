@@ -1,4 +1,5 @@
 "use client";
+import { getGenderLabel } from "~/utils/getLabels";
 import { BackgroundGradient } from "../ui/background-gradient";
 import { Link } from "@remix-run/react";
 
@@ -13,19 +14,6 @@ export function CharacterCard({
   planetName: string;
   url: string;
 }) {
-  function getGenderLabel(gender: string): string {
-    switch (gender) {
-      case "female":
-        return "Gênero feminino";
-      case "male":
-        return "Gênero masculino";
-      case "hermaphrodite":
-        return "Hermafrodita";
-      default:
-        return "Gênero desconhecido";
-    }
-  }
-
   function extractIdFromUrl(url: string): string | null {
     const match = url.match(/\/people\/(\d+)\//);
     return match ? match[1] : null;

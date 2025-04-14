@@ -1,11 +1,10 @@
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
 import { Await, defer, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
 import VisualizeCharacter from "~/components/characters/visualize-character";
 import ErrorPage from "~/components/global/error-page";
 import Layout from "~/components/layout/layout";
-import LoadingData from "~/components/layout/loaging-data";
+import LoadingData from "~/components/layout/loading-data";
 import Title from "~/components/layout/title";
 import { CharacterRepository } from "~/infra/instances/repositories/character-repository";
 
@@ -28,7 +27,7 @@ export default function CharacterDetails() {
 
   return (
     <Layout>
-      <Title>Detalhe do personagem</Title>
+      <Title>Detalhes do personagem</Title>
       <Suspense fallback={<LoadingData />}>
         <Await resolve={characterPromise} errorElement={<ErrorPage />}>
           {(character) => {

@@ -8,7 +8,7 @@ import { Suspense, useEffect, useState } from "react";
 import ListCharacters from "~/components/characters/list-characters";
 import ErrorPage from "~/components/global/error-page";
 import Layout from "~/components/layout/layout";
-import LoadingData from "~/components/layout/loaging-data";
+import LoadingData from "~/components/layout/loading-data";
 import Title from "~/components/layout/title";
 import { CharacterRepository } from "~/infra/instances/repositories/character-repository";
 import { generatePageTile } from "~/utils/metadata";
