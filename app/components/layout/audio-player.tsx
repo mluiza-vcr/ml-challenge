@@ -21,7 +21,7 @@ export function AudioPlayer() {
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center" data-testid="audio-player">
       <Button onClick={togglePlayback} variant="ghost" className="p-5 w-full">
         <Music className="mr-1" width={20} />
         {isPlaying ? "Pausar música" : "Tocar música"}
