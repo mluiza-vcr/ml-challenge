@@ -5,16 +5,16 @@ import { TextGenerateEffect } from "../ui/text-generate-effect";
 
 export default function HomePage() {
   const starWarsIntro =
-    "It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR, an armored space station with enough power to destroy an entire planet. Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy.";
+    "É um período de guerra civil. Naves rebeldes, atacando a partir de uma base secreta, conquistaram sua primeira vitória contra o maligno Império Galáctico. Durante a batalha, espiões rebeldes conseguiram roubar planos secretos da arma definitiva do Império, a ESTRELA DA MORTE, uma estação espacial blindada com poder suficiente para destruir um planeta inteiro. Perseguida pelos agentes sinistros do Império, a Princesa Leia corre para casa a bordo de sua nave, guardiã dos planos roubados que podem salvar seu povo e restaurar a liberdade à galáxia.";
 
   return (
     <>
-      <div className="px-6 text-justify">
-        <TextGenerateEffect words={starWarsIntro} />{" "}
+      <div className="px-6 lg:text-justify">
+        <TextGenerateEffect words={starWarsIntro} />
       </div>
-      <div className="flex flex-col lg:flex-row lg:justify-evenly">
-        <CardContainer className="inter-var">
-          <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+      <div className="flex flex-col lg:flex-row justify-center gap-2">
+        <CardContainer>
+          <CardBody className="bg-gray-50 relative hover:shadow-2xl hover:shadow-emerald-400/[0.2] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
             <CardItem
               translateZ="50"
               className="text-xl font-bold text-neutral-600 dark:text-white"
@@ -41,8 +41,8 @@ export default function HomePage() {
             </CardItem>
           </CardBody>
         </CardContainer>
-        <CardContainer className="inter-var">
-          <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+        <CardContainer className="mt-[-100px] lg:mt-0">
+          <CardBody className="bg-gray-50 relative hover:shadow-2xl hover:shadow-emerald-400/[0.2] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
             <CardItem
               translateZ="50"
               className="text-xl font-bold text-neutral-600 dark:text-white"

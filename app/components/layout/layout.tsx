@@ -13,8 +13,8 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="relative h-[100dvh] flex flex-col overflow-hidden">
+      <ShootingStars starWidth={15} />
       <StarsBackground />
-      <ShootingStars />
       <Spotlight className="left-0 md:left-0" fill="blue" />
       <Header />
       <main className="flex-1 w-full overflow-auto p-5 pb-10 relative">

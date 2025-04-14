@@ -10,10 +10,10 @@ export default function HomePage() {
   return (
     <main className="flex">
       <div className="w-full h-screen flex flex-col md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
-        <ShootingStars />
+        <ShootingStars starWidth={15} />
         <StarsBackground />
         <div className="flex flex-col justify-center items-center">
-          <img src={LogoML} alt="logotipo" className="w-64 mt-10 md:mt-0" />
+          <img src={LogoML} alt="logotipo" className="w-60 mt-10 md:mt-0" />
         </div>
         <Spotlight className="left-0 md:left-60 md:-top-20" fill="blue" />
         <div className="p-6 mx-auto relative z-10 w-full md:pt-0">
@@ -24,7 +24,7 @@ export default function HomePage() {
             <Link to="/home">
               <ShimmerButton className="shadow-2xl m-auto" type="submit">
                 <span className=" whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg p-3">
-                  The force will be with you
+                  Que a força esteja com você
                 </span>
               </ShimmerButton>
             </Link>
