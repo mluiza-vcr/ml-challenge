@@ -6,7 +6,7 @@ import ErrorPage from "~/components/global/error-page";
 import Layout from "~/components/layout/layout";
 import LoadingData from "~/components/layout/loading-data";
 import Title from "~/components/layout/title";
-import { CharacterRepository } from "~/infra/instances/repositories/character-repository";
+import { CharacterRepository } from "~/infra/repositories/character-repository";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const id = params.id;

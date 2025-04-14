@@ -6,10 +6,7 @@ import Layout from "~/components/layout/layout";
 import LoadingData from "~/components/layout/loading-data";
 import Title from "~/components/layout/title";
 import VisualizePlanet from "~/components/planets/visualize-planet";
-import {
-  PlanetRepository,
-  SwapiResponse,
-} from "~/infra/instances/repositories/planet-repository";
+import { PlanetRepository } from "~/infra/repositories/planet-repository";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   const id = params.id;

@@ -14,7 +14,7 @@ import { generatePageTile } from "~/utils/metadata";
 import { Input } from "~/components/ui/input";
 import { Button } from "~/components/ui/button";
 import ListPlanets from "~/components/planets/list-planets";
-import { PlanetRepository } from "~/infra/instances/repositories/planet-repository";
+import { PlanetRepository } from "~/infra/repositories/planet-repository";
 
 export async function loader({ request }: LoaderFunctionArgs) {
   const url = new URL(request.url);
