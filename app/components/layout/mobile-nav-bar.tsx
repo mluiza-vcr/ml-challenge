@@ -21,7 +21,7 @@ export function MobileNavBar() {
             <Contact className="mr-2" size={20} /> Personagens
           </Link>
           <Link
-            to="/personagens?page=1"
+            to="/planetas?page=1"
             className="text-lg font-medium flex items-center"
           >
             <Earth className="mr-2" size={20} /> Planetas

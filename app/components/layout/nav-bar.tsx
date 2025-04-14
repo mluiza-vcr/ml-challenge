@@ -31,7 +31,7 @@ export default function NavBar() {
         </Link>
       </CardContainer>
       <CardContainer>
-        <Link to="/personagens?page=1">
+        <Link to="/planetas?page=1">
           <CardBody className="cursor-pointer text-sm hover:shadow-2xl hover:shadow-emerald-400/[0.5] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-[6.5rem] h-fit rounded-xl p-3 border">
             <CardItem
               translateZ="50"
