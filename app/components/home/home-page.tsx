@@ -9,10 +9,10 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="px-6 lg:text-justify">
+      <div className="lg:px-6 lg:text-justify text-xl -mb-8">
         <TextGenerateEffect words={starWarsIntro} />
       </div>
-      <div className="flex flex-col lg:flex-row justify-center gap-2">
+      <div className="flex flex-col lg:flex-row justify-center lg:gap-2 -mb-8">
         <CardContainer>
           <CardBody className="bg-gray-50 relative hover:shadow-2xl hover:shadow-emerald-400/[0.2] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
             <CardItem
@@ -28,7 +28,7 @@ export default function HomePage() {
             >
               Encontre todos os personagens dos filmes
             </CardItem>
-            <CardItem translateZ="100" className="w-full mt-4 p-8">
+            <CardItem translateZ="100" className="w-full mt-4 p-10">
               <Link to="/personagens">
                 <img
                   src="https://i0.wp.com/www.gibizilla.com.br/wp-content/uploads/2021/02/Darth-Vader.jpg?w=1536&ssl=1"
@@ -56,7 +56,7 @@ export default function HomePage() {
             >
               Viaje por todos os planetas da série
             </CardItem>
-            <CardItem translateZ="100" className="w-full mt-4 p-8">
+            <CardItem translateZ="100" className="w-full mt-4 p-10">
               <Link to="/planetas">
                 <img
                   src="https://super.abril.com.br/wp-content/uploads/2016/12/bespinb.jpg?quality=70&strip=all"

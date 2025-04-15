@@ -13,10 +13,10 @@ export default function Header() {
     >
       <div className="flex items-center gap-2">
         <Link to="/">
-          <img src={Logo} alt="logotipo" className="w-16" />
+          <img src={Logo} alt="logotipo" className="lg:w-16 w-14" />
         </Link>
         <div className="">
-          <AudioPlayer />
+          <AudioPlayer text={false} />
         </div>
       </div>
 

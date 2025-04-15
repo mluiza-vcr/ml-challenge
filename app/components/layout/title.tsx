@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import BackNavigationButton from "./back-navigation-button";
-import { AudioPlayer } from "./audio-player";
 
 export default function Title({ children }: { children: ReactNode }) {
   return (
