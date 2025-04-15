@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <main className="flex">
       <div className="fixed top-2 left-2 transform z-50">
-        <AudioPlayer />
+        <AudioPlayer text={true} />
       </div>
       <div className="w-full h-screen flex flex-col md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
         <ShootingStars starWidth={15} />
