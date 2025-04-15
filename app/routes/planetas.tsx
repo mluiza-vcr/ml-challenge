@@ -95,7 +95,7 @@ export default function Characters() {
 
   return (
     <Layout>
-      <Title>Planetass</Title>
+      <Title>Planetas</Title>
       {isLoading ? (
         <LoadingData />
       ) : error ? (
