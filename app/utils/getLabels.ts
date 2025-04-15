@@ -288,11 +288,17 @@ export function formatDiameter(diameter: string): string {
   const km = Number.parseInt(diameter, 10);
   if (Number.isNaN(km)) return "Diâmetro desconhecido";
 
-  if (km >= 1000) {
-    const milhares = (km / 1000).toFixed(1).replace(".", ",");
-    return `${milhares} mil km de diâmetro`;
+  if (km >= 1_000_000) {
+    const valor = (km / 1_000_000).toFixed(1).replace(".", ",");
+    return `${valor} milhões de km de diâmetro`;
   }
-  return `${km} km de diâmetro`;
+
+  if (km >= 1_000) {
+    const valor = (km / 1_000).toFixed(1).replace(".", ",");
+    return `${valor} mil km de diâmetro`;
+  }
+
+  return `${km.toLocaleString("pt-BR")} km de diâmetro`;
 }
 
 export function formatPopulation(population: string): string {
@@ -311,7 +317,7 @@ export function formatPopulation(population: string): string {
 
   if (pop >= 1_000_000) {
     const valor = (pop / 1_000_000).toFixed(1).replace(".", ",");
-    return `${valor} milhão${valor === "1,0" ? "" : "es"} de habitantes`;
+    return `${valor} ${valor === "1,0" ? "milhão" : "milhões"} de habitantes`;
   }
   return `${pop.toLocaleString("pt-BR")} habitante${pop === 1 ? "" : "s"}`;
 }
