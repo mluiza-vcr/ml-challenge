@@ -39,7 +39,7 @@ export const TextGenerateEffect = ({
             <motion.span
               // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
               key={word + idx}
-              className="dark:text-white text-black opacity-0"
+              className="dark:text-yellow-400 text-black opacity-0"
               style={{
                 filter: filter ? "blur(10px)" : "none",
               }}

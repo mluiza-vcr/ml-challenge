@@ -22,14 +22,14 @@ export function AudioPlayer({ text }: { text: boolean }) {
 
   return (
     <div className="flex items-center" data-testid="audio-player">
-      <Button onClick={togglePlayback} variant="outline" className="p-3 w-full">
+      <Button onClick={togglePlayback} variant="outline" className="p-4">
         {text ? (
           <>
-            <Music className="mr-1" width={20} />
+            <Music className="mr-1" />
             {isPlaying ? "Pausar música" : "Tocar música"}{" "}
           </>
         ) : (
-          <Music width={20} />
+          <Music />
         )}
       </Button>
       {/* biome-ignore lint/a11y/useMediaCaption: <explanation> */}
