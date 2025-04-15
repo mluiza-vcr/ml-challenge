@@ -94,7 +94,7 @@ export default function Characters() {
         <ErrorPage />
       ) : (
         <div className="flex flex-col space-y-10 items-center">
-          <div className="mt-5">
+          <div className="mt-5 lg:mt-0">
             <Input
               placeholder="Buscar por nome, planeta ou gênero"
               className="w-72"
