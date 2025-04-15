@@ -1,16 +1,13 @@
 "use client";
 import { Link } from "@remix-run/react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
-import { TextGenerateEffect } from "../ui/text-generate-effect";
+import StarWarsTextIntro from "./text-intro";
 
 export default function HomePage() {
-  const starWarsIntro =
-    "É um período de guerra civil. Naves rebeldes, atacando a partir de uma base secreta, conquistaram sua primeira vitória contra o maligno Império Galáctico. Durante a batalha, espiões rebeldes conseguiram roubar planos secretos da arma definitiva do Império, a ESTRELA DA MORTE, uma estação espacial blindada com poder suficiente para destruir um planeta inteiro. Perseguida pelos agentes sinistros do Império, a Princesa Leia corre para casa a bordo de sua nave, guardiã dos planos roubados que podem salvar seu povo e restaurar a liberdade à galáxia.";
-
   return (
     <>
       <div className="lg:px-6 lg:text-justify text-xl -mb-8">
-        <TextGenerateEffect words={starWarsIntro} />
+        <StarWarsTextIntro />
       </div>
       <div className="flex flex-col lg:flex-row justify-center lg:gap-2 -mb-8">
         <CardContainer>
