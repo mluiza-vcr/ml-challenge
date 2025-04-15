@@ -14,7 +14,8 @@ Com uma interface responsiva e amigável, o projeto permite buscar, filtrar e fa
 ## ✨ Funcionalidades
 
 - ✅ Listagem paginada de **personagens** e **planetas**
-- 🔍 Filtro por **nome** e **clima** (no caso dos planetas)
+- 🔍 Filtro por **nome**,  **gênero** e **planeta** (no caso dos personagens)
+- 🔍 Filtro por **nome**,  **clima** e **diâmetro** (no caso dos planetas)
 - ⭐ Favoritar personagens e planetas
 - 📄 Página de detalhes com informações enriquecidas
 - 📱 Interface **responsiva**, otimizada para **mobile**, **tablet** e **desktop**
