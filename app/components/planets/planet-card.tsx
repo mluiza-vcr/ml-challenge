@@ -79,10 +79,10 @@ export function PlanetCard({ planet }: { planet: Planet }) {
               className="w-6 h-6"
             />
           </div>
-          <p className="sm:text-xl font-bold lg:text-2xl text-black mt-4 mb-2 dark:text-neutral-200">
-            {planet.name}
+          <p className="sm:text-xl font-bold lg:text-2xl text-black lg:mt-4 lg:mb-2 dark:text-neutral-200">
+            {planet.name === "unkwown" ? "Desconhecido" : planet.name}
           </p>
-          <p className="lg:mt-5 sm:text-lg text-black mt-4 mb-2 dark:text-neutral-200">
+          <p className="lg:mt-5 lg:mb-2 sm:text-lg text-black p-2 dark:text-neutral-200">
             {planet.diameter === "unknown"
               ? "Diâmetro desconhecido"
               : `${planet.diameter} km de diâmetro`}
