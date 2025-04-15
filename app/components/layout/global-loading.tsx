@@ -17,7 +17,7 @@ export default function GlobalLoading() {
               alt="loading logo"
               draggable={false}
             />
-            <Rocket className="inline animate-spin w-1/3 h-auto z-[200] text-cyan-400" />
+            <Rocket className="inline animate-spin w-1/2 h-auto z-[200] text-cyan-400" />
           </div>
         </div>
       )}
