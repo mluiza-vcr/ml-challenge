@@ -59,8 +59,6 @@ export function PlanetCard({ planet }: { planet: Planet }) {
     setIsFavorite(!isAlreadyFavorited);
   }
 
-  console.log(planet);
-
   return (
     <div className="w-full min-w-80 lg:w-1/6 cursor-pointer relative">
       <Link to={`/planetas/${id}`}>
@@ -86,9 +84,7 @@ export function PlanetCard({ planet }: { planet: Planet }) {
             {planet.name === "unknown" ? "Desconhecido" : planet.name}
           </p>
           <p className="lg:mt-5 lg:mb-2 sm:text-lg text-black p-2 dark:text-neutral-200">
-            {planet.diameter === "unknown"
-              ? "Diâmetro desconhecido"
-              : `${formatDiameter(planet.diameter)}`}
+            {formatDiameter(planet.diameter)}
           </p>
           <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
             Clima {getClimateLabel(planet.climate)}

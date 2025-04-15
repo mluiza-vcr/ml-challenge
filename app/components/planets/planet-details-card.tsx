@@ -1,5 +1,6 @@
 "use client";
 import {
+  formatDiameter,
   formatPopulation,
   getClimateLabel,
   getOrbitalPeriodLabel,
@@ -37,6 +38,8 @@ export function PlanetDetailsCard({
     return match ? match[1] : null;
   }
 
+  console.log("diameter", diameter);
+
   return (
     <div className="w-full lg:w-2/5 mx-auto mt-5">
       <BackgroundGradient className="rounded-[22px] p-4 sm:p-8 bg-white dark:bg-zinc-900 text-center">
@@ -44,7 +47,7 @@ export function PlanetDetailsCard({
           {name === "unknown" ? "Desconhecido" : name}
         </p>
         <p className="lg:mt-5 sm:text-lg text-black mt-4 mb-2 dark:text-neutral-200">
-          {diameter} km de diâmetro
+          {formatDiameter(diameter)}
         </p>
         <div className="flex gap-2 justify-center">
           <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
