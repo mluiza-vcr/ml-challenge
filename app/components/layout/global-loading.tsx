@@ -1,35 +1,9 @@
-import { UpdateIcon } from "@radix-ui/react-icons";
 import { useNavigation } from "@remix-run/react";
-import { useEffect, useState } from "react";
-import Logo from "/logo-dark.png";
-
-function Timer() {
-  const [initialTime] = useState(Date.now());
-  const [elapsedTime, setElapsedTime] = useState(0);
-
-  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const time = Date.now() - initialTime;
-      setElapsedTime(time);
-    }, 250);
-    return () => clearInterval(interval);
-  }, []);
-  return (
-    <p className="text-white font-bold text-2xl">
-      {elapsedTime.toString().padStart(4, "0")}ms
-    </p>
-  );
-}
+import Logo from "/logo-star-wars.png";
+import { Rocket } from "lucide-react";
 
 export default function GlobalLoading() {
   const { state } = useNavigation();
-  const [isDev, setIsDev] = useState(false);
-
-  useEffect(() => {
-    const isDev = /hub\.dev|localhost/.test(window?.location?.href || "");
-    setIsDev(isDev);
-  }, []);
 
   return (
     <>
@@ -43,8 +17,7 @@ export default function GlobalLoading() {
               alt="loading logo"
               draggable={false}
             />
-            <UpdateIcon className="inline animate-spin  w-1/3 h-auto z-[200] text-blue-400" />
-            {isDev && <Timer />}
+            <Rocket className="inline animate-spin w-1/2 h-auto z-[200] text-cyan-400" />
           </div>
         </div>
       )}

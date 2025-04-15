@@ -1,31 +1,26 @@
 import type { ReactNode } from "react";
 import GlobalLoading from "./global-loading";
 import Header from "./header";
-import Sidebar from "./sidebar";
-
+import { StarsBackground } from "../ui/stars-background";
+import { ShootingStars } from "../ui/shooting-stars";
+import { Spotlight } from "../ui/spotlight";
+import { cn } from "~/lib/utils";
+import Footer from "./footer";
 interface LayoutProps {
   children: ReactNode;
 }
+
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateAreas: `'header header' 'sidebar main'`,
-        gridTemplateColumns: "min-content 1fr",
-        gridTemplateRows: "60px 1fr",
-        height: "100vh",
-        overflow: "hidden",
-      }}
-    >
+    <div className="relative h-[100dvh] flex flex-col overflow-hidden">
+      <ShootingStars starWidth={15} />
+      <StarsBackground />
+      <Spotlight className="left-0 md:left-0" fill="blue" />
       <Header />
-      <Sidebar />
-      <main
-        className="flex-1 w-full pb-10 p-5 box-border overflow-auto relative"
-        style={{ gridArea: "main" }}
-      >
+      <main className="flex-1 w-full overflow-auto p-5 pb-10 relative">
         {children}
       </main>
+      <Footer />
       <GlobalLoading />
     </div>
   );
