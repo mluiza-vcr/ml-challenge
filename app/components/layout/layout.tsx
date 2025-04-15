@@ -4,8 +4,8 @@ import Header from "./header";
 import { StarsBackground } from "../ui/stars-background";
 import { ShootingStars } from "../ui/shooting-stars";
 import { Spotlight } from "../ui/spotlight";
-import { cn } from "~/lib/utils";
 import Footer from "./footer";
+
 interface LayoutProps {
   children: ReactNode;
 }

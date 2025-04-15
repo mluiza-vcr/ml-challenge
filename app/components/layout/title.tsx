@@ -9,7 +9,6 @@ export default function Title({ children }: { children: ReactNode }) {
         <span>{children}</span>
         <BackNavigationButton />
       </div>
-      <AudioPlayer />
     </h1>
   );
 }
