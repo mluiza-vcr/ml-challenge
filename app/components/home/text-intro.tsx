@@ -1,6 +1,6 @@
 export default function StarWarsTextIntro() {
   return (
-    <div className="relative overflow-hidden bg-black text-yellow-400 flex items-center justify-center h-screen">
+    <div className="relative overflow-hidden bg-transparent text-yellow-400 flex items-center justify-center h-screen">
       <div className="perspective w-full h-full">
         <div className="animate-crawl text-center preserve-3d text-xl max-w-2xl mx-auto leading-relaxed opacity-100 will-change-transform">
           <p className="mb-4">
