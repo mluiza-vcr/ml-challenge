@@ -18,6 +18,7 @@ Com uma interface responsiva e amigável, o projeto permite buscar, filtrar e fa
 - 🔍 Filtro por **nome**,  **clima** e **diâmetro** (no caso dos planetas)
 - ⭐ Favoritar personagens e planetas
 - 📄 Página de detalhes com informações enriquecidas
+- 🌗 **Modo claro e escuro** com alternância de tema
 - 📱 Interface **responsiva**, otimizada para **mobile**, **tablet** e **desktop**
 
 ---
@@ -48,3 +49,6 @@ pnpm install
 
 # rode o servidor de desenvolvimento
 pnpm dev
+
+# estará disponível em 
+http://localhost:5000
