@@ -1,40 +1,49 @@
-# Welcome to Remix!
+# 🌌 ML Challenge Star Wars
 
-- 📖 [Remix docs](https://remix.run/docs)
+Aplicação web criada para listar personagens e planetas do universo Star Wars usando a [SWAPI](https://swapi.dev/).  
+Com uma interface responsiva e amigável, o projeto permite buscar, filtrar e favoritar personagens e planetas, além de visualizar detalhes completos de cada um.
 
-## Development
+---
 
-Run the dev server:
+## 🔗 Acesse o projeto
 
-```shellscript
-npm run dev
-```
+👉 **[ml-challenge-beta.vercel.app](https://ml-challenge-beta.vercel.app)**
 
-## Deployment
+---
 
-First, build your app for production:
+## ✨ Funcionalidades
 
-```sh
-npm run build
-```
+- ✅ Listagem paginada de **personagens** e **planetas**
+- 🔍 Filtro por **nome** e **clima** (no caso dos planetas)
+- ⭐ Favoritar personagens e planetas
+- 📄 Página de detalhes com informações enriquecidas
+- 📱 Interface **responsiva**, otimizada para **mobile**, **tablet** e **desktop**
 
-Then run the app in production mode:
+---
 
-```sh
-npm start
-```
+## 🛠️ Tecnologias utilizadas
 
-Now you'll need to pick a host to deploy it to.
+- [Remix](https://remix.run/)
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Shadcn UI](https://ui.shadcn.com/)
+- [Aceternity UI](https://ui.aceternity.com/)
+- [SWAPI - Star Wars API](https://swapi.dev/)
 
-### DIY
+---
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+## 🚀 Como rodar o projeto localmente
 
-Make sure to deploy the output of `npm run build`
+```bash
+# clone o repositório
+git clone https://github.com/mluiza-vcr/ml-challenge.git
 
-- `build/server`
-- `build/client`
+# entre na pasta do projeto
+cd ml-challenge
 
-## Styling
+# instale as dependências
+pnpm install
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+# rode o servidor de desenvolvimento
+pnpm dev
