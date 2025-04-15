@@ -31,25 +31,20 @@ export default function Characters() {
   }, [searchTerm]);
 
   useEffect(() => {
-    const fetchCharacters = async () => {
-      try {
-        const repository = new CharacterRepository();
-        const response = await repository.getAllCharacters();
+    const fetchAllCharacters = async () => {
+      const repository = new CharacterRepository();
+      const { data, error } = await repository.getAllCharacters();
 
-        if (response.error) {
-          throw new Error("Erro ao buscar personagens");
-        }
-
-        setCharacters(response.data ?? []);
-        // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-      } catch (err: any) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
+      if (data) {
+        setCharacters(data);
+      } else {
+        setError(error);
       }
+
+      setIsLoading(false);
     };
 
-    fetchCharacters();
+    fetchAllCharacters();
   }, []);
 
   function filterCharacters(characters: Character[], search: string) {

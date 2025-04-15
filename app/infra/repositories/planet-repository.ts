@@ -70,6 +70,42 @@ export class PlanetRepository {
     }
   }
 
+  async getAllPlanets(): Promise<{
+    data: Planet[] | null;
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    error: any;
+  }> {
+    const allPlanets: Planet[] = [];
+    let nextUrl: string | null = "https://swapi.py4e.com/api/planets/";
+
+    try {
+      while (nextUrl) {
+        const res = await fetch(nextUrl);
+        const data: SwapiResponse = await res.json();
+
+        const planets: Planet[] = data.results.map((planet: Planet) => ({
+          name: planet.name,
+          diameter: planet.diameter,
+          climate: planet.climate,
+          url: planet.url,
+          id: this.extractIdFromUrl(planet.url),
+        }));
+
+        allPlanets.push(...planets);
+        nextUrl = data.next;
+      }
+
+      return {
+        data: allPlanets,
+        error: null,
+      };
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    } catch (err: any) {
+      console.error("Erro ao buscar todos os planetas:", err);
+      return { data: null, error: err };
+    }
+  }
+
   async getPlanetById(id: string): Promise<{
     data: PlanetDetail | null;
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>

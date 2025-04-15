@@ -57,7 +57,7 @@ export default function HomePage() {
               Viaje por todos os planetas da série
             </CardItem>
             <CardItem translateZ="100" className="w-full mt-4 p-8">
-              <Link to="/planetas?page=1">
+              <Link to="/planetas">
                 <img
                   src="https://super.abril.com.br/wp-content/uploads/2016/12/bespinb.jpg?quality=70&strip=all"
                   height="1000"

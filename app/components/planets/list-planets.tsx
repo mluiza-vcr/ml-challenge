@@ -13,12 +13,14 @@ export default function ListPlanets({
   results,
   count,
   page,
+  onPageChange,
 }: {
   results: Planet[] | undefined;
   count: number;
   page: number;
+  onPageChange: (newPage: number) => void;
 }) {
-  const totalPages = Math.ceil(count / 10); // SWAPI retorna 10 por página
+  const totalPages = Math.ceil(count / 10);
 
   return (
     <div>
@@ -26,17 +28,24 @@ export default function ListPlanets({
         {results
           ?.slice()
           .sort((a, b) => a.name.localeCompare(b.name))
-          .map((planet) => {
-            return <PlanetCard key={planet.name} planet={planet} />;
-          })}
+          .map((planet) => (
+            <PlanetCard key={planet.name} planet={planet} />
+          ))}
       </div>
+
       <div className="mt-6 lg:mt-10">
         {totalPages > 1 && (
           <Pagination className="flex flex-wrap justify-center gap-2 mt-4 px-4">
             <PaginationContent className="flex flex-wrap justify-center gap-2">
               {page > 1 && (
                 <PaginationItem>
-                  <PaginationPrevious href={`?page=${page - 1}`} />
+                  <PaginationPrevious
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onPageChange(page - 1);
+                    }}
+                  />
                 </PaginationItem>
               )}
 
@@ -45,8 +54,12 @@ export default function ListPlanets({
                 return (
                   <PaginationItem key={pageNumber}>
                     <PaginationLink
-                      href={`?page=${pageNumber}`}
+                      href="#"
                       isActive={pageNumber === page}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onPageChange(pageNumber);
+                      }}
                       className="min-w-[36px] text-center"
                     >
                       {pageNumber}
@@ -57,7 +70,13 @@ export default function ListPlanets({
 
               {page < totalPages && (
                 <PaginationItem>
-                  <PaginationNext href={`?page=${page + 1}`} />
+                  <PaginationNext
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onPageChange(page + 1);
+                    }}
+                  />
                 </PaginationItem>
               )}
             </PaginationContent>
