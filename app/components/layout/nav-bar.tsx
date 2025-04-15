@@ -18,7 +18,7 @@ export default function NavBar() {
         </Link>
       </CardContainer>
       <CardContainer>
-        <Link to="/personagens?page=1">
+        <Link to="/personagens">
           <CardBody className="cursor-pointer text-sm hover:shadow-2xl hover:shadow-emerald-400/[0.5] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-[8.2rem] h-fit rounded-xl p-3 border">
             <CardItem
               translateZ="50"

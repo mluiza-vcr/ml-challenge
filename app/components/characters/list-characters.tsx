@@ -13,10 +13,12 @@ export default function ListCharacters({
   results,
   count,
   page,
+  onPageChange,
 }: {
   results: Character[] | undefined;
   count: number;
   page: number;
+  onPageChange: (newPage: number) => void;
 }) {
   const totalPages = Math.ceil(count / 10);
 
@@ -26,17 +28,24 @@ export default function ListCharacters({
         {results
           ?.slice()
           .sort((a, b) => a.name.localeCompare(b.name))
-          .map((character) => {
-            return <CharacterCard key={character.name} character={character} />;
-          })}
+          .map((character) => (
+            <CharacterCard key={character.name} character={character} />
+          ))}
       </div>
+
       <div className="mt-6 lg:mt-10">
         {totalPages > 1 && (
           <Pagination className="flex flex-wrap justify-center gap-2 mt-4 px-4">
             <PaginationContent className="flex flex-wrap justify-center gap-2">
               {page > 1 && (
                 <PaginationItem>
-                  <PaginationPrevious href={`?page=${page - 1}`} />
+                  <PaginationPrevious
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onPageChange(page - 1);
+                    }}
+                  />
                 </PaginationItem>
               )}
 
@@ -45,8 +54,12 @@ export default function ListCharacters({
                 return (
                   <PaginationItem key={pageNumber}>
                     <PaginationLink
-                      href={`?page=${pageNumber}`}
+                      href="#"
                       isActive={pageNumber === page}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        onPageChange(pageNumber);
+                      }}
                       className="min-w-[36px] text-center"
                     >
                       {pageNumber}
@@ -57,7 +70,13 @@ export default function ListCharacters({
 
               {page < totalPages && (
                 <PaginationItem>
-                  <PaginationNext href={`?page=${page + 1}`} />
+                  <PaginationNext
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onPageChange(page + 1);
+                    }}
+                  />
                 </PaginationItem>
               )}
             </PaginationContent>

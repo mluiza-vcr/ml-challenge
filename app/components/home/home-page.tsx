@@ -29,7 +29,7 @@ export default function HomePage() {
               Encontre todos os personagens dos filmes
             </CardItem>
             <CardItem translateZ="100" className="w-full mt-4 p-8">
-              <Link to="/personagens?page=1">
+              <Link to="/personagens">
                 <img
                   src="https://i0.wp.com/www.gibizilla.com.br/wp-content/uploads/2021/02/Darth-Vader.jpg?w=1536&ssl=1"
                   height="1000"

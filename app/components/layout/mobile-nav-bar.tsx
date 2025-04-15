@@ -15,7 +15,7 @@ export function MobileNavBar() {
             Home
           </Link>
           <Link
-            to="/personagens?page=1"
+            to="/personagens"
             className="text-lg font-medium flex items-center"
           >
             <Contact className="mr-2" size={20} /> Personagens
