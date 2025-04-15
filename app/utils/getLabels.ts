@@ -285,7 +285,10 @@ export function getOrbitalPeriodLabel(value: string): string {
 }
 
 export function formatDiameter(diameter: string): string {
+  if (diameter === "unknown") return "Diâmetro desconhecido";
+
   const km = Number.parseInt(diameter, 10);
+
   if (Number.isNaN(km)) return "Diâmetro desconhecido";
 
   if (km >= 1_000_000) {
