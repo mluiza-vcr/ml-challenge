@@ -56,21 +56,11 @@ module.exports = {
       keyframes: {
         crawl: {
           "0%": {
-            transform: "rotateX(20deg) translateZ(0) translateY(100%)",
+            transform: "rotateX(45deg) translateZ(0) translateY(0%)",
             opacity: "1",
           },
           "100%": {
-            transform: "rotateX(25deg) translateZ(-300px) translateY(-500%)",
-            opacity: "0",
-          },
-        },
-        crawl: {
-          "0%": {
-            transform: "rotateX(20deg) translateZ(0) translateY(0%)",
-            opacity: "1",
-          },
-          "100%": {
-            transform: "rotateX(25deg) translateZ(-300px) translateY(-500%)",
+            transform: "rotateX(45deg) translateZ(-300px) translateY(-500%)",
             opacity: "0",
           },
         },
