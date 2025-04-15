@@ -10,13 +10,13 @@ import { AudioPlayer } from "../layout/audio-player";
 export default function HomePage() {
   return (
     <main className="flex">
-      <div className="fixed top-2 left-2 transform  z-50">
+      <div className="fixed top-2 left-2 transform z-50">
         <AudioPlayer />
       </div>
       <div className="w-full h-screen flex flex-col md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
         <ShootingStars starWidth={15} />
         <StarsBackground />
-        <div className="flex flex-col justify-center items-center mt-44 lg:mt-0">
+        <div className="flex flex-col justify-center items-center mt-28 lg:mt-0">
           <img src={LogoML} alt="logotipo" className="w-60" />
         </div>
         <Spotlight className="left-0 md:left-60 md:-top-20" fill="blue" />
