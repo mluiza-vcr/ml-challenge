@@ -6,6 +6,7 @@ import { Link } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import type { Planet } from "~/infra/repositories/planet-repository";
+import { formatDiameter } from "~/utils/getLabels";
 
 export function PlanetCard({ planet }: { planet: Planet }) {
   function extractIdFromUrl(url: string): string | null {
@@ -87,7 +88,7 @@ export function PlanetCard({ planet }: { planet: Planet }) {
           <p className="lg:mt-5 lg:mb-2 sm:text-lg text-black p-2 dark:text-neutral-200">
             {planet.diameter === "unknown"
               ? "Diâmetro desconhecido"
-              : `${planet.diameter} km de diâmetro`}
+              : `${formatDiameter(planet.diameter)}`}
           </p>
           <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
             Clima {getClimateLabel(planet.climate)}

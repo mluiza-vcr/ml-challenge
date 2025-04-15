@@ -1,5 +1,6 @@
 "use client";
 import {
+  formatPopulation,
   getClimateLabel,
   getOrbitalPeriodLabel,
   getRotationPeriodLabel,
@@ -52,7 +53,7 @@ export function PlanetDetailsCard({
           <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
             {population === "unknown"
               ? "Desconhecida"
-              : `${population} habitantes`}
+              : `${formatPopulation(population)}`}
           </p>
         </div>
         <div className="flex gap-2 justify-center">

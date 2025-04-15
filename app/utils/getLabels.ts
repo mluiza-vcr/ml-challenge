@@ -283,3 +283,36 @@ export function getOrbitalPeriodLabel(value: string): string {
 
   return `Um ano dura ${num} dia${num === 1 ? "" : "s"}`;
 }
+
+export function formatDiameter(diameter: string): string {
+  const km = Number.parseInt(diameter, 10);
+  if (Number.isNaN(km)) return "Diâmetro desconhecido";
+
+  if (km >= 1000) {
+    const milhares = (km / 1000).toFixed(1).replace(".", ",");
+    return `${milhares} mil km de diâmetro`;
+  }
+  return `${km} km de diâmetro`;
+}
+
+export function formatPopulation(population: string): string {
+  const pop = Number.parseInt(population, 10);
+  if (Number.isNaN(pop)) return "População desconhecida";
+
+  if (pop >= 1_000_000_000_000) {
+    return `${(pop / 1_000_000_000_000)
+      .toFixed(1)
+      .replace(".", ",")} trilhões de habitantes`;
+  }
+  if (pop >= 1_000_000_000) {
+    return `${(pop / 1_000_000_000)
+      .toFixed(1)
+      .replace(".", ",")} bilhões de habitantes`;
+  }
+  if (pop >= 1_000_000) {
+    return `${(pop / 1_000_000)
+      .toFixed(1)
+      .replace(".", ",")} milhões de habitantes`;
+  }
+  return `${pop.toLocaleString("pt-BR")} habitantes`;
+}

@@ -15,8 +15,8 @@ export default function HomePage() {
         <Spotlight className="left-0 md:left-60 md:-top-20" fill="blue" />
 
         {/* TOPO */}
-        <div className="flex justify-center items-center">
-          <img src={LogoStarWars} alt="logotipo" className="w-52" />
+        <div className="flex justify-center items-center -mt-5 md:mt-0">
+          <img src={LogoStarWars} alt="logotipo" className="w-52 md:w-80" />
         </div>
 
         {/* MEIO */}
