@@ -62,7 +62,7 @@ export function CharacterCard({ character }: { character: Character }) {
   }
 
   return (
-    <div className="w-full lg:min-w-80 lg:w-1/6 cursor-pointer">
+    <div className="w-full min-w-80 lg:w-1/6 cursor-pointer">
       <Link to={`/personagens/${extractIdFromUrl(character.url)}`}>
         <BackgroundGradient className="rounded-[22px] p-4 sm:p-8 bg-white dark:bg-zinc-900 lg:h-56 text-center">
           <div

@@ -59,9 +59,9 @@ export function PlanetCard({ planet }: { planet: Planet }) {
   }
 
   return (
-    <div className="w-full lg:min-w-80 lg:w-1/6 cursor-pointer relative">
+    <div className="w-full min-w-80 lg:w-1/6 cursor-pointer relative">
       <Link to={`/planetas/${id}`}>
-        <BackgroundGradient className="rounded-[22px] p-4 sm:p-8 bg-white dark:bg-zinc-900 lg:h-56 text-center">
+        <BackgroundGradient className="rounded-[22px] p-4 bg-white dark:bg-zinc-900 lg:h-56 text-center">
           <div
             onClick={toggleFavorite}
             className="absolute top-4 right-4 text-purple-600 hover:scale-110 transition-transform"
