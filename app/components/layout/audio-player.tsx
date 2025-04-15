@@ -22,11 +22,15 @@ export function AudioPlayer({ text }: { text: boolean }) {
 
   return (
     <div className="flex items-center" data-testid="audio-player">
-      <Button onClick={togglePlayback} variant="outline" className="p-4">
+      <Button
+        onClick={togglePlayback}
+        variant="outline"
+        className="w-full justify-center p-4 rounded-none"
+      >
         {text ? (
           <>
             <Music className="mr-1" />
-            {isPlaying ? "Pausar música" : "Tocar música"}{" "}
+            {isPlaying ? "Pausar música" : "Tocar música"}
           </>
         ) : (
           <Music />

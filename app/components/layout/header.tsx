@@ -11,14 +11,9 @@ export default function Header() {
       className="flex justify-between h-20 items-center px-4 border-b supports-backdrop-blur:bg-background/60 bg-background/60 backdrop-blur z-50"
       style={{ gridArea: "header" }}
     >
-      <div className="flex items-center gap-2">
-        <Link to="/">
-          <img src={Logo} alt="logotipo" className="lg:w-16 w-14" />
-        </Link>
-        <div className="">
-          <AudioPlayer text={false} />
-        </div>
-      </div>
+      <Link to="/">
+        <img src={Logo} alt="logotipo" className="w-20" />
+      </Link>
 
       {/* Desktop Nav */}
       <div className="hidden lg:flex">

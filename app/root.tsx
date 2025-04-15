@@ -1,3 +1,4 @@
+import type React from "react";
 import {
   Links,
   Meta,
@@ -6,10 +7,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-import clsx from "clsx";
-
 import "./tailwind.css";
-import { useEffect, useState } from "react";
+import { AudioPlayer } from "./components/layout/audio-player";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -25,14 +24,6 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  function setInitialTheme() {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }
   return (
     <html lang="pt-BR" style={{ overflow: "hidden" }}>
       <head>
@@ -41,6 +32,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
         <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
           dangerouslySetInnerHTML={{
             __html: `(function() {
               try {
@@ -63,5 +55,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <div className="w-full">
+        <AudioPlayer text={true} />
+      </div>
+      <Outlet />
+    </>
+  );
 }
