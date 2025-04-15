@@ -22,7 +22,8 @@ export default function StarWarsTextIntro() {
             <br />
             <br /> Perseguida pelos agentes sinistros do Império, a Princesa
             Leia corre para casa a bordo de sua nave, guardiã dos planos
-            roubados que podem salvar seu povo e restaurar a liberdade à galáxia
+            roubados que podem salvar seu povo e restaurar a liberdade à
+            galáxia.
           </p>
         </div>
       </div>
