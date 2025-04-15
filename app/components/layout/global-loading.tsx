@@ -9,7 +9,6 @@ export default function GlobalLoading() {
     <>
       {state === "loading" && (
         <div className="absolute inset-0 z-[100] flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500 to-indigo-600 opacity-20 z-[150]" />
           <div className="max-w-[100px] space-y-5 flex flex-col items-center z-[200]">
             <img
               className="w-full"
