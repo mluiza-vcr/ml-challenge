@@ -58,6 +58,8 @@ export function PlanetCard({ planet }: { planet: Planet }) {
     setIsFavorite(!isAlreadyFavorited);
   }
 
+  console.log(planet);
+
   return (
     <div className="w-full min-w-80 lg:w-1/6 cursor-pointer relative">
       <Link to={`/planetas/${id}`}>
@@ -80,7 +82,7 @@ export function PlanetCard({ planet }: { planet: Planet }) {
             />
           </div>
           <p className="sm:text-xl font-bold lg:text-2xl text-black lg:mt-4 lg:mb-2 dark:text-neutral-200">
-            {planet.name === "unkwown" ? "Desconhecido" : planet.name}
+            {planet.name === "unknown" ? "Desconhecido" : planet.name}
           </p>
           <p className="lg:mt-5 lg:mb-2 sm:text-lg text-black p-2 dark:text-neutral-200">
             {planet.diameter === "unknown"
