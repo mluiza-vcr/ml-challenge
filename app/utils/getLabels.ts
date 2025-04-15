@@ -263,24 +263,23 @@ export function getTerrainLabel(terrain: string): string {
 }
 
 export function getRotationPeriodLabel(value: string): string {
-  if (value.toLowerCase() === "unknown")
-    return "Período de rotação desconhecido";
+  if (value.toLowerCase() === "unknown") return "Desconhecido";
 
   const num = Number.parseInt(value, 10);
-  if (Number.isNaN(num)) return "Período de rotação inválido";
+  if (Number.isNaN(num)) return "Período inválido";
 
   if (num === 0) return "Sem rotação";
 
-  return `Um dia dura aprox. ${num} hora${num === 1 ? "" : "s"}`;
+  return `Um dia dura ${num} h`;
 }
 
 export function getOrbitalPeriodLabel(value: string): string {
-  if (value.toLowerCase() === "unknown") return "Período orbital desconhecido";
+  if (value.toLowerCase() === "unknown") return "Desconhecido";
 
   const num = Number.parseInt(value, 10);
-  if (Number.isNaN(num)) return "Período orbital inválido";
+  if (Number.isNaN(num)) return "Período inválido";
 
   if (num === 0) return "Sem translação";
 
-  return `Um ano dura aprox. ${num} dia${num === 1 ? "" : "s"}`;
+  return `Um ano dura ${num} dia${num === 1 ? "" : "s"}`;
 }

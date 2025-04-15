@@ -57,23 +57,7 @@ export function PlanetDetailsCard({
         </div>
         <div className="flex gap-2 justify-center">
           <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
-            Clima:
-          </p>
-          <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
-            {getClimateLabel(climate)}
-          </p>
-        </div>
-        <div className="flex gap-2 justify-center">
-          <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
-            Terreno:
-          </p>
-          <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
-            {getTerrainLabel(terrain)}
-          </p>
-        </div>
-        <div className="flex gap-2 justify-center">
-          <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
-            Período de rotação:
+            Período rotacional:
           </p>
           <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
             {getRotationPeriodLabel(rotationPeriod)}
@@ -86,6 +70,37 @@ export function PlanetDetailsCard({
           <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
             {getOrbitalPeriodLabel(orbitalPeriod)}
           </p>
+        </div>
+        <div className="flex gap-2 justify-center">
+          <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
+            Clima:
+          </p>
+          <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
+            {getClimateLabel(climate)}
+          </p>
+        </div>
+        <div className="flex flex-col justify-center my-5">
+          <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
+            Terreno:
+          </p>
+          {getTerrainLabel(terrain).includes(",") ? (
+            getTerrainLabel(terrain)
+              .split(",")
+              .map((char) => {
+                return (
+                  <p
+                    key={char}
+                    className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400"
+                  >
+                    {char}
+                  </p>
+                );
+              })
+          ) : (
+            <p className="text-sm lg:text-base text-neutral-600 dark:text-neutral-400">
+              {getTerrainLabel(terrain)}
+            </p>
+          )}
         </div>
         <div className="flex flex-col justify-center my-5">
           <p className="text-sm lg:text-base font-bold text-neutral-600 dark:text-neutral-400">
