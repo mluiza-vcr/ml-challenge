@@ -1,7 +1,6 @@
 "use client";
 import { Link } from "@remix-run/react";
 import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
-import StarWarsTextIntro from "./text-intro";
 
 export default function HomePage() {
   return (
