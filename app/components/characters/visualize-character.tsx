@@ -15,12 +15,12 @@ export default function VisualizeCharacter({
 
   const handlePrevious = () => {
     if (currentId > 1) {
-      navigate(`/planetas/${currentId - 1}`);
+      navigate(`/personagens/${currentId - 1}`);
     }
   };
 
   const handleNext = () => {
-    navigate(`/planetas/${currentId + 1}`);
+    navigate(`/personagens/${currentId + 1}`);
   };
 
   return (
