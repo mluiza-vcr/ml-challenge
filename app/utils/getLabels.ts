@@ -300,19 +300,18 @@ export function formatPopulation(population: string): string {
   if (Number.isNaN(pop)) return "População desconhecida";
 
   if (pop >= 1_000_000_000_000) {
-    return `${(pop / 1_000_000_000_000)
-      .toFixed(1)
-      .replace(".", ",")} trilhões de habitantes`;
+    const valor = (pop / 1_000_000_000_000).toFixed(1).replace(".", ",");
+    return `${valor} trilh${valor === "1,0" ? "ão" : "ões"} de habitantes`;
   }
+
   if (pop >= 1_000_000_000) {
-    return `${(pop / 1_000_000_000)
-      .toFixed(1)
-      .replace(".", ",")} bilhões de habitantes`;
+    const valor = (pop / 1_000_000_000).toFixed(1).replace(".", ",");
+    return `${valor} bilh${valor === "1,0" ? "ão" : "ões"} de habitantes`;
   }
+
   if (pop >= 1_000_000) {
-    return `${(pop / 1_000_000)
-      .toFixed(1)
-      .replace(".", ",")} milhões de habitantes`;
+    const valor = (pop / 1_000_000).toFixed(1).replace(".", ",");
+    return `${valor} milhão${valor === "1,0" ? "" : "es"} de habitantes`;
   }
-  return `${pop.toLocaleString("pt-BR")} habitantes`;
+  return `${pop.toLocaleString("pt-BR")} habitante${pop === 1 ? "" : "s"}`;
 }
