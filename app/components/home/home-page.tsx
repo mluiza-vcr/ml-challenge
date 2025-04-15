@@ -5,7 +5,7 @@ import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 export default function HomePage() {
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-center lg:gap-2 -mb-16 -mt-16">
+      <div className="flex flex-col lg:flex-row justify-center lg:gap-2 -mb-16 -mt-16 lg:mt-0">
         <CardContainer>
           <CardBody className="bg-gray-50 relative hover:shadow-2xl hover:shadow-emerald-400/[0.2] bg-transparent dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
             <CardItem
